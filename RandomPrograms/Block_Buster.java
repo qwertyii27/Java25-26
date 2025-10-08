@@ -9,6 +9,9 @@ The discount is equal to: 59.00%
  */
 
 // Made by Georgio and Aidan.
+
+import java.util.Scanner;
+
 public class Block_Buster {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
