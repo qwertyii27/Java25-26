@@ -1,0 +1,43 @@
+//The program made by Georgio Tournas. 
+// I made a program that uses the least amount of coins for change. I made this before class, so I didn't see the better method.
+public class CoinsFIXED {
+    public static void main(String[] args) {
+        double calcAmount = 0; // active variable used for counting change
+        final double REALAMOUNT = 0.99; // change needed for purchase
+        double changeDiff = REALAMOUNT - calcAmount; // difference between calculated amount and change needed
+        int quarterNo = 0; // Counting how much of each coin, for debug
+        int dimeNo = 0;
+        int nickelNo = 0;
+        int pennyNo = 0;
+        while (changeDiff != 0) {
+            System.out.println("Calculating...");
+            while (changeDiff >= 0.25) { // add quarter if not too high
+                calcAmount = calcAmount + 0.25;
+                quarterNo = quarterNo++;
+                System.err.println("Adding Quarter..");
+                changeDiff = REALAMOUNT - calcAmount;
+            }
+            while (changeDiff >= 0.10) { // rinse and repeat for other coins
+                calcAmount = calcAmount + 0.10;
+                dimeNo = dimeNo + 1;
+                System.err.println("Adding Dime..");
+                changeDiff = REALAMOUNT - calcAmount;
+            }
+            while (changeDiff >= 0.05) {
+                calcAmount = calcAmount + 0.05;
+                nickelNo = nickelNo + 1;
+                System.err.println("Adding Nickel..");
+                changeDiff = REALAMOUNT - calcAmount;
+            }
+            while (changeDiff > +0.01) {
+                calcAmount = calcAmount + 0.01;
+                pennyNo = pennyNo + 1;
+                System.err.println("Adding Penny..");
+                changeDiff = REALAMOUNT - calcAmount;
+            }
+        }
+        System.out.println("Your balance is " + REALAMOUNT); // spits out balance
+        System.out.println("Change: " + quarterNo + "quarters, " + dimeNo + "dimes, " + nickelNo + "nickels, and "
+                + pennyNo + "pennies!"); // number of each coins for cashier
+    }
+}

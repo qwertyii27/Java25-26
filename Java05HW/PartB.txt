@@ -1,0 +1,13 @@
+char c = name.charAt(0);
+charAt is an instance method because it calls on the "name" object instead of any class.
+
+String answer = String.valueOf(Math.PI / 2.0);
+This is a static method because "String" (capitalized) is a method, or what we called a "blueprint"
+in our class discussion.
+
+String msg = String.format("PI = %.5f", Math.PI);
+Another static method for the similar reason, it is a method of the String class instead of an object.
+
+int length = phrase.length();
+This is an instance method because, like the first one, it calls a "phrase" object instead of a class.
+
