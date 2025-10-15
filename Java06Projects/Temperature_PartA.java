@@ -13,12 +13,11 @@ public class Temperature_PartA {
         boolean solid = false;
 
         // get input
-        System.out.println("Enter a number and string.");
+        System.out.print("Enter a temperature then 'C' for Celsius or 'F' for Farenheit separated by a space: ");
         heat = in.nextDouble();
         type = in.next();
 
-        System.out.printf("%f%s%n", heat, type);
-        System.out.println("_________"); // seperator
+        System.out.printf("%n+++++++++++++++++%n"); // seperator
 
         // calculations
         if (type.startsWith("C")) {
@@ -29,7 +28,7 @@ public class Temperature_PartA {
             } else {
                 solid = true;
             }
-        } else {
+        } else if (type.startsWith("F")) {
             if (heat >= 212.0) {
                 gas = true;
             } else if (heat >= 32.0) {
@@ -39,18 +38,19 @@ public class Temperature_PartA {
             }
 
         }
-
+        System.out.println(gas);
+        System.out.println(liquid);
+        System.out.println(solid);
         // give output
-        if (gas = true) {
-            System.out.printf("At a temperature of $.2f%s, water is a gas.", heat, type);
+        if (gas == true) {
+            System.out.printf("At a temperature of %.2f%s, water is a gas.", heat, type);
         }
-        if (liquid = true) {
-            System.out.printf("At a temperature of $.2f%s, water is a liquid.", heat, type);
+        if (liquid == true) {
+            System.out.printf("At a temperature of %.2f%s, water is a liquid.", heat, type);
         }
-        if (solid = true) {
-            System.out.printf("At a temperature of $.2f%s, water is a solid.", heat, type);
+        if (solid == true) {
+            System.out.printf("At a temperature of %.2f%s, water is a solid.", heat, type);
         }
-
         in.close();
     }
 }
