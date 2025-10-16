@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Alphabet_PartC {
+public class Alphabet_PartCArray {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String[] words = new String[3];
