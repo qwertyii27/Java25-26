@@ -13,7 +13,7 @@ public class Cookie_Discount {
 
         // Get input
         System.out.printf("Welcome to the Cougar Baking Company!%n How many cookies do you want to buy?: ");
-        cookieNum = in.nextDouble();
+        cookieNum = in.nextInt();
 
         // Calculate
         priceTotal = cookieNum * COOKIE_PRICE;
