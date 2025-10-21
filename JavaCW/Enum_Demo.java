@@ -28,7 +28,7 @@ public class Enum_Demo {
                 day = DayOfWeek.Saturday;
             case "Sunday":
                 day = DayOfWeek.Sunday;
+
         }
-        System.out.println(day);
     }
 }
