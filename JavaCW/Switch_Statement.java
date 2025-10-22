@@ -5,7 +5,7 @@ public class Switch_Statement {
         Scanner in = new Scanner(System.in);
         System.out.println("Please enter a digit from 0 to 9.");
         int digit = in.nextInt();
-        String digitName;
+        String digitName = null;
 
         switch (digit) {
             case 1:
@@ -38,5 +38,6 @@ public class Switch_Statement {
             default:
                 break;
         }
+        System.out.println(digitName);
     }
 }
