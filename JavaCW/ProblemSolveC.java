@@ -27,10 +27,9 @@ public class ProblemSolveC {
 
         // get numTiles and pairs
         numTiles = (int) (roomWidth / 5);
-        numPairs = (int) (numTiles /2);
+        numPairs = (int) (numTiles / 2);
         System.out.println("There are " + numTiles + " tiles!");
 
         // get gap
-        wallGap = 
     }
 }

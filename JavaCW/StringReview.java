@@ -21,6 +21,7 @@ public class StringReview {
 
         System.out.printf("The quotient of your numbers is %.2f%n", one / two);
         System.out.printf("The percentage is equal to %.2f,%n", one);
+        in.close();
     }
 
 }
