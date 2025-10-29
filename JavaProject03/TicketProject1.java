@@ -5,25 +5,28 @@ work. I have not copied anything, nor have I looked for this specific problem. *
 import java.util.Scanner;
 
 public class TicketProject1 {
+    enum Age {
+        BABY, CHILD, ADULT, SENIOR
+    }
+
+    enum Day {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+    }
+
     public static void main(String[] args) {
         System.out.printf("Launching ticketing system...%n-----------------------%n ");
         // enmurate age and days
-        enum Age {
-            BABY, CHILD, ADULT, SENIOR
-        }
-        enum Day {
-            MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
-        }
 
         // initialize variables
         int hoursIn, minutesIn, timeMil, ageIn;
         String timeIn, timeWork, name, dayIn, studentIn;
-        final double PRICE_WEEKEND = 80.00, PRICE_RUSH = 90.00, PRICE_NORMAL = 100.00;
+        final double PRICE_WEEKEND = 80.00, PRICE_RUSH = 100.00, PRICE_NORMAL = 90.00;
         final double BABY_DISCOUNT = 0.0, CHILD_DISCOUNT = 0.8, SENIOR_DISCOUNT = 0.75;
+        final double STUDENT_DISCOUNT = 0.95;
         double finalPrice;
         boolean student;
         Day today;
-        Age age;
+        Age age = null;
 
         // initialize scanner
         Scanner in = new Scanner(System.in);
@@ -89,6 +92,8 @@ public class TicketProject1 {
         }
         hoursIn = Integer.parseInt(timeIn.substring(0, 2));
         minutesIn = Integer.parseInt(timeIn.substring(3, 5));
+        timeMil = Integer.parseInt(String.valueOf(hoursIn) + String.valueOf(minutesIn));
+        timeWork = String.valueOf(hoursIn) + ":" + String.valueOf(minutesIn);
         if (hoursIn < 0 || hoursIn > 23 || minutesIn > 59 || minutesIn < 0) {
             System.err.printf("Error: Please input a proper time in the 24 hour format.%nTerminating Program.%n");
             return;
@@ -110,7 +115,7 @@ public class TicketProject1 {
         }
         System.out.printf("%nAre you a student? (y/n): ");
         studentIn = in.next();
-        if (!studentIn.equals("n") || !studentIn.equals("y")) {
+        if (!studentIn.equals("n") && !studentIn.equals("y")) {
             System.err.printf("%nError: Please enter answer as y/n.%nTerminating program.");
             in.close();
             return;
@@ -122,10 +127,46 @@ public class TicketProject1 {
         }
 
         // find base pricing
-        if (today == Day.MONDAY || today == Day.TUESDAY || today == Day.WEDNESDAY || today == Day.MONDAY
-                || today == Day.MONDAY) {
+        if (today == Day.MONDAY || today == Day.TUESDAY || today == Day.WEDNESDAY || today == Day.THURSDAY
+                || today == Day.FRIDAY) {
+            if (timeMil >= 600 && timeMil <= 759) {
+                finalPrice = PRICE_RUSH;
+                boolean rushHour = true;
+            } else if (timeMil >= 1600 && timeMil <= 1759) {
+                finalPrice = PRICE_RUSH;
+            } else {
+                finalPrice = PRICE_NORMAL;
+            }
 
+        } else {
+            finalPrice = PRICE_WEEKEND;
+            boolean rushHour = false;
         }
 
+        // find age discounts
+        switch (age) {
+            case BABY:
+                finalPrice = finalPrice * BABY_DISCOUNT;
+                break;
+            case CHILD:
+                finalPrice = finalPrice * CHILD_DISCOUNT;
+                break;
+            case ADULT:
+                break;
+            case SENIOR:
+                finalPrice = finalPrice * SENIOR_DISCOUNT;
+                break;
+        }
+        // find student discount
+        if (student = true) {
+            finalPrice = finalPrice * STUDENT_DISCOUNT;
+        }
+        System.out.println(name);
+        System.out.println(finalPrice);
+        System.out.println(timeWork);
+        System.out.println(age);
+        System.out.println("Student?" + student);
+        System.out.println(today);
+        in.close();
     }
 }
