@@ -197,10 +197,9 @@ public class TicketProject1 {
             studentDiscount = 0;
         }
         // final output
-        System.out.printf(
-                "%n---------------------------------%nName:    %-20s%nDay:     %-20s%nTime:    %-20s%n---------------------------------%n",
-                name,
-                today, timeWork);
+        System.out.printf("%n---------------------------------%n");
+        System.out.printf("Name:    %-20s%nDay:     %-20s%nTime:    %-20s", name, today, timeWork);
+        System.out.printf("%n---------------------------------%n");
         System.out.printf("Base Price:         $%11.2f (%s)%n", basePrice, price);
         System.out.printf("Age Discount:       $%11.2f (%s)%n", (basePrice * ageDiscount) - basePrice, age);
         System.out.printf("Student Discount:   $%11.2f (%s)",
