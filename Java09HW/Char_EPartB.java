@@ -14,7 +14,7 @@ public class Char_EPartB {
         phrase = in.nextLine().toLowerCase(); // get phrase and length
         phraseLength = phrase.length();
 
-        for (int i = 1; i < phraseLength; i++) { // the loop
+        for (int i = 0; i < phraseLength; i++) { // the loop
             phraseChar = phrase.charAt(i);
             if (phraseChar == 'e') {
                 eCount = eCount + 1;
