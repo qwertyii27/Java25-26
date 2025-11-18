@@ -86,7 +86,9 @@ public class LetterGrade_PartC {
         }
 
         // calculate average.
-        double avg = (double) (total / COUNT);
+        // Error #4: avg would always round when not supposed to. Fixed this.
+        // double avg = (double)(total / COUNT);
+        double avg = (double) (total) / (double) (COUNT);
 
         // Did the student pass?
         boolean passed = false;

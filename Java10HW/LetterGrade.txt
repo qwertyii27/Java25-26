@@ -6,3 +6,11 @@ I fixed this by turning it to OR (||), making the min and max actually work.
 Next I saw that the pass/fail was ruined by a random semi-colon.
 This seperated the conditional from its coding block, making the student always pass.
 I removed the random semi-colon.
+
+Third I noticed that the minimum was always showing up as zero.
+This was because the initialized minimum was 0, and nothing could be lower.
+To fix this, I initialized minimum as 101.
+
+Finally, I noticed that the average would be off because instead of dividing two doubles, the
+calculator would first divide the integers and THEN cast them as doubles. I rectified this by
+casting both total and count to double before dividing them.
