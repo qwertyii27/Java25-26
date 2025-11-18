@@ -1,0 +1,8 @@
+This is a summary of the changes I mader, since the PartC Assignment is very long.
+
+First I noticed that the case for changing to 0 and 100 was AND (&&), meaning it would never trigger.
+I fixed this by turning it to OR (||), making the min and max actually work.
+
+Next I saw that the pass/fail was ruined by a random semi-colon.
+This seperated the conditional from its coding block, making the student always pass.
+I removed the random semi-colon.
