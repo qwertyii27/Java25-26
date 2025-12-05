@@ -1,0 +1,5 @@
+length begins as two. As the cubeVolume method is being used, 
+the internal variable "volume" is 2 * 2 * 2, or 8. volume is returned, 
+and "result" is set to volume. This prints "8."
+
+This happens again with ten. 10*10*10 is 1000, so "1000" is printed.
