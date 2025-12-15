@@ -1,0 +1,21 @@
+Made by Georgio.
+"public class Conversation
+{
+
+   public static void main(String[] args)
+   {
+      Scanner in = new Scanner(System.in);
+      System.out.print("What is your first name? ");
+      String input = in.next();
+      System.out.println("Hello, " + input);
+      System.out.print("How old are you? ");
+      int input = in.nextInt();
+      input++;
+      System.out.println("Next year, you will be " + input);
+   }
+}"
+There are multiple issues here.
+On line 5, "Scanner in = new Scanner(System.in);". Scanner was never imported or created,
+it is not in the class..
+
+Secondly, there are TWO variables named "input." This cannot happen.
