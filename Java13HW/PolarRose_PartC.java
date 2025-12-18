@@ -11,18 +11,20 @@ public class PolarRose_PartC {
      */
     public static void draw(Graphics g) {
         double theta = 0;
+        int steps = 10000;
+        double scale = 400.0;
         g.setColor(Color.BLACK);
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < steps; i++) {
             double radius = Math.cos(2 * theta);
-            double xVal = 150.0 * radius * Math.cos(theta);
-            double yVal = 150.0 * radius * Math.sin(theta);
+            double xVal = scale * radius * Math.cos(theta);
+            double yVal = scale * radius * Math.sin(theta);
 
             int xComp = (int) xVal;
             int yComp = (int) yVal;
 
-            g.drawRect(xComp + 200, yComp + 200, 1, 1);
+            g.drawRect(xComp + (int) scale, yComp + (int) scale, 1, 1);
 
-            theta = (Math.PI * 2) / 1000 - i;
+            theta = (Math.PI * 2) / steps - i;
         }
     }
 
