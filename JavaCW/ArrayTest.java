@@ -17,7 +17,8 @@ if (in.hasNext("Q") || in.hasNext("q"))
 	break;
 testScores[i] = in.nextDouble();
 avgCount ++;
-} 
+}
+System.out.println("Number of entries:" + avgCount);
 for (double score : testScores){ //get greatest
 if (score > greatest)
 	greatest = score;
