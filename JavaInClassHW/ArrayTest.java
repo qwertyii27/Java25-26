@@ -11,7 +11,7 @@ double workAvg = 0.0;
 int avgCount = 0;
 Scanner in = new Scanner(System.in);
 
-for (int i = 0; i < 10; i++){ //record scores
+for (int i = 0; i < testScores.length; i++){ //record scores
 System.out.println("Please input a test score.");
 if (in.hasNext("Q") || in.hasNext("q"))
 	break;
