@@ -32,14 +32,12 @@ public class RemoveTest {
 
 		for (int i = 0; i < testScores.length; i++) { // record scores
 			System.out.println("Please input a test score.");
-			if (in.hasNext("Q") || in.hasNext("q"))
+			if (in.hasNext("Q") || in.hasNext("q")) // quit if quit pattern is entered.
 				break;
 			testScores[i] = in.nextDouble();
 			avgCount++;
 		}
-		// eat extra input.
-		while (in.hasNext()) {
-			in.nextLine();
+		for (int i = 0; i < avgCount + 1; i++) { // removes extra input.
 			in.nextLine();
 		}
 		for (double score : testScores) { // get greatest
@@ -55,8 +53,7 @@ public class RemoveTest {
 		System.out.println("Greatest is: " + greatest);
 		System.out.println("Average is: " + avg);
 
-		// remove test
-
+		// Begin removal.
 		System.out.println("Current Array:" + Arrays.toString(testScores));
 
 		System.out.println("Enter an index score to remove: ");
@@ -65,6 +62,6 @@ public class RemoveTest {
 		Remove(testScores.length, tgtPoint, testScores);
 
 		System.out.println("New Array with input " + tgtPoint + " removed:" + Arrays.toString(testScores));
-
+		in.close(); // close scanner
 	} // ending brackets
 }
