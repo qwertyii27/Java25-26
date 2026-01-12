@@ -31,6 +31,7 @@ public class AddTest {
         int valueQuantity = 10; // The initial maximum values for the array prompted.
         double workAvg = 0.0; // For math.
         int avgCount = 0; // For math.
+        int tgtPoint; // Inputted index score to alter.
         Scanner in = new Scanner(System.in);
 
         for (int i = 0; i < valueQuantity; i++) { // record scores
@@ -62,7 +63,7 @@ public class AddTest {
         System.out.println("Current Array:" + Arrays.toString(subArray));
 
         System.out.println("Enter an index score to add a value: ");
-        int tgtPoint = in.nextInt();
+        tgtPoint = in.nextInt();
         in.nextLine();
 
         System.out.println("Enter a score to add: ");
