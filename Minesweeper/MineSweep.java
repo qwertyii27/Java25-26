@@ -1,3 +1,5 @@
+
+//By Georgio. No AI-generated or plaigarized content was used. Some outside sources were consulted.
 import java.util.Arrays;
 // IMPORTANT NOTES:
 // - Negative integers are used to represent a mine.
