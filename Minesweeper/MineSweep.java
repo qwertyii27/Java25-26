@@ -7,7 +7,6 @@ import java.util.Arrays;
 // - 0 means no nearby mines.
 // TBD make another 2D array with the SOLE purpose of keeping note of which are hidden
 // --> 1 = revealed, 0 = hidden
-// TBD extend mine validation for bottom 3 tiles
 
 public class MineSweep {
     static int rows = 8;
@@ -41,8 +40,7 @@ public class MineSweep {
         }
     }
 
-    public static void populate(int[][] minefield, int numMines) { // resets and populates the field with mines
-        Arrays.fill(minefield[0], 0);
+    public static void populate(int[][] minefield, int numMines) { // populates the field with mines
         for (int i = 0; i < numMines; i++) { // picks random spots
             int x = (int) (Math.floor(Math.random() * 8));
             int y = (int) (Math.floor(Math.random() * 8));
