@@ -15,7 +15,7 @@ public class OddList_PartD {
         }
 
         for (int i = test.size(); i > 0; i--) {
-            if ((i / 2) - ((double) i / 2.0) != 0) {
+            if ((test.get(i - 1) / 2) - ((double) test.get(i - 1) / 2.0) != 0) {
                 test.remove(i - 1);
             }
         }
