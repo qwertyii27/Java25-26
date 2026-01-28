@@ -20,9 +20,13 @@ import java.util.Arrays;
 // - 0 means no nearby mines.
 // Key array: SOLE purpose of keeping note of which are hidden
 // --> 1 = revealed, 0 = hidden, 2 = flag
-import java.util.Scanner;
 
-import javax.management.timer.Timer;
+//TBD:
+// --> Figure out why solvecheck makes not work
+// --> add flag functionality
+// --> add solve check functionality
+
+import java.util.Scanner;
 
 public class MineSweep {
     static int rows = 9;
@@ -64,12 +68,12 @@ public class MineSweep {
                     break;
                 if (reference[i][r] == 0)
                     System.out.print("[#] ");
+                else if (reference[i][r] == 2)
+                    System.out.println("[F] ");
                 else if (minefield[i][r] == 0) { // no nearby
                     System.out.print("[ ] ");
                 } else if (minefield[i][r] < 0) { // is mine
                     System.out.print("[M] ");
-                } else if (minefield[i][r] > 9) {
-                    System.out.print("[F] ");
                 } else { // number of mines nearby
                     System.out.printf("[%d] ", minefield[i][r]);
                 }
@@ -163,7 +167,7 @@ public class MineSweep {
         int[][] vision = new int[rows][columns]; // manages visibility. 0 = hidden, 1 = shown
         boolean solved = false;
         boolean gameOver = false;
-        int xGuess, yGuess;
+        int xSelect, ySelect;
 
         // initialize and show hidden for debug
         populate(field, 10);
@@ -189,15 +193,21 @@ public class MineSweep {
             printScreen(field, vision);
             System.out.println("Input anything to proceed.");
             in.nextLine();
-            System.out.println("Input 'g' to guess a spot, or anything else to exit.");
+            System.out.println("Input 'g' to guess a spot, or 'f' to flag.");
             char input = in.nextLine().charAt(0);
             if (input == 'g') { // guess a single spot, then redraw
                 System.out.print("Please enter a row to guess: ");
-                xGuess = in.nextInt() - 1;
+                xSelect = in.nextInt() - 1;
                 System.out.print("Please enter a column to guess: ");
-                yGuess = in.nextInt() - 1;
-                vision[xGuess][yGuess] = 1;
+                ySelect = in.nextInt() - 1;
+                vision[xSelect][ySelect] = 1;
                 continue;
+            } else if (input == 'f') { // flags a single spot, then redraw
+                System.out.print("Please enter a row to flag: ");
+                xSelect = in.nextInt() - 1;
+                System.out.print("Please enter a column to flag: ");
+                ySelect = in.nextInt() - 1;
+                vision[xSelect][ySelect] = 10;
             }
         }
         // System.out.println("WIN STATE:" + solveCheck(field, vision));
