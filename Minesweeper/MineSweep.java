@@ -8,11 +8,13 @@ import java.util.Arrays;
 // 0 = loss, 1 = win, 2 = continue
 //
 // ->> printScreen(): prints main minefield
-//
+// adjusts 
 // ->> printHidden(): prints the secret key.
 // 0 == no adjacent, 1-8 = adjacent number of mines, 10 = flag, negative = mine
 //
 // ->> populate(): randomly populates minefield with mines.
+// 
+//->> validate():
 
 // IMPORTANT NOTES:
 // - Negative integers are used to represent a mine.
@@ -66,10 +68,12 @@ public class MineSweep {
             for (int r = 0; i < columns; r++) { // prints depending on condition of cell
                 if (r == columns) // see reason above for this stupid piece of code.
                     break;
+                if (minefield[i][r] == 10) // checks for flags
+                    reference[i][r] = 2;
                 if (reference[i][r] == 0)
                     System.out.print("[#] ");
                 else if (reference[i][r] == 2)
-                    System.out.println("[F] ");
+                    System.out.print("[F] ");
                 else if (minefield[i][r] == 0) { // no nearby
                     System.out.print("[ ] ");
                 } else if (minefield[i][r] < 0) { // is mine
@@ -167,6 +171,7 @@ public class MineSweep {
         int[][] vision = new int[rows][columns]; // manages visibility. 0 = hidden, 1 = shown
         boolean solved = false;
         boolean gameOver = false;
+        boolean debugMode = false;
         int xSelect, ySelect;
 
         // initialize and show hidden for debug
@@ -193,7 +198,10 @@ public class MineSweep {
             printScreen(field, vision);
             System.out.println("Input anything to proceed.");
             in.nextLine();
-            System.out.println("Input 'g' to guess a spot, or 'f' to flag.");
+            System.out.println("Input 'g' to guess a spot, 'd' to enable debug options, or 'f' to flag.");
+            if (debugMode) {
+                System.out.println("Input 'w' to show winstate, 'h' to reveal the board, or 'z' to solve.");
+            }
             char input = in.nextLine().charAt(0);
             if (input == 'g') { // guess a single spot, then redraw
                 System.out.print("Please enter a row to guess: ");
@@ -208,6 +216,26 @@ public class MineSweep {
                 System.out.print("Please enter a column to flag: ");
                 ySelect = in.nextInt() - 1;
                 vision[xSelect][ySelect] = 10;
+            } else if (input == 'w' && debugMode) { // DEBUG: Winstate.
+                System.out.printf("WINSTATE: %d%n Input anything to proceed.%n", solveCheck(field, vision));
+                in.nextLine();
+            } else if (input == 'h' && debugMode) { // DEBUG: Reveal field.
+                printHidden(field);
+                System.out.println("Input anything to proceed.");
+                in.nextLine();
+            } else if (input == 'd') { // DEBUG: Enable debug mode.
+                debugMode = true;
+            } else if (input == 'z' && debugMode) { // DEBUG: try to instantly solve.
+                for (int[] fields : field) {
+                    int r = 0;
+                    for (int i = 0; i < fields.length; i++) {
+                        if (fields[i] >= 0) {
+                            fields[i] = 10;
+                            vision[r][i] = 2;
+                        }
+                    }
+                    r++;
+                }
             }
         }
         // System.out.println("WIN STATE:" + solveCheck(field, vision));
