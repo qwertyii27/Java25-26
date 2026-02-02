@@ -10,7 +10,7 @@ import java.util.Arrays;
 // ->> printScreen(): prints main minefield
 // adjusts 
 // ->> printHidden(): prints the secret key.
-// 0 == no adjacent, 1-8 = adjacent number of mines, 10 = flag, negative = mine
+// 0 == no adjacent, 1-8 = adjacent number of mines, 10 = flag (DEPRECATED), negative = mine
 //
 // ->> populate(): randomly populates minefield with mines.
 // 
@@ -42,20 +42,24 @@ public class MineSweep {
     public static int solveCheck(int[][] minefield, int[][] reference) { // checks for game continue, win, or loss
         int count = 0;
         int threshold = rows * columns;
-        for (int i = 0; i != rows; i++) {
+        for (int i = 0; i != rows; i++) { // defeat check
             for (int r = 0; r != columns; r++) {
-                if (reference[i][r] == 1 && (minefield[i][r] < 0)) { // revealed mine
+                if (reference[i][r] == 1 && (minefield[i][r] < 0)) {
                     return 0;
-                } else if (reference[i][r] == 1 || (minefield[i][r] < 0 && reference[i][r] == 2)) { // checked or
-                                                                                                    // flagged mine
-                    count++;
                 }
             }
         }
-        if (count == threshold) {
-            return 1;
+        for (int i = 0; i != rows; i++) { // continue check
+            for (int r = 0; r != columns; r++) {
+                if (reference[i][r] == 0 && (minefield[i][r] < 0)) { // unfound mines
+                    return 2;
+                }
+                if (reference[i][r] == 2 && minefield[i][r] >= 0) {
+                    return 2;
+                }
+            }
         }
-        return 2;
+        return 1;
     }
 
     public static void printScreen(int[][] minefield, int[][] reference) { // prints the terminal screen when called
@@ -68,8 +72,8 @@ public class MineSweep {
             for (int r = 0; i < columns; r++) { // prints depending on condition of cell
                 if (r == columns) // see reason above for this stupid piece of code.
                     break;
-                if (minefield[i][r] == 10) // checks for flags
-                    reference[i][r] = 2;
+                // if (minefield[i][r] == 10) // checks for flags (DEPRECATED)
+                // reference[i][r] = 2;
                 if (reference[i][r] == 0)
                     System.out.print("[#] ");
                 else if (reference[i][r] == 2)
@@ -101,8 +105,8 @@ public class MineSweep {
                     System.out.print("[ ] ");
                 } else if (minefield[i][r] < 0) { // is mine
                     System.out.print("[M] ");
-                } else if (minefield[i][r] > 9) {
-                    System.out.print("[F] ");
+                    // } else if (minefield[i][r] > 9) {
+                    // System.out.print("[F] ");
                 } else { // number of mines nearby
                     System.out.printf("[%d] ", minefield[i][r]);
                 }
@@ -168,7 +172,7 @@ public class MineSweep {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int[][] field = new int[rows][columns]; // main field
-        int[][] vision = new int[rows][columns]; // manages visibility. 0 = hidden, 1 = shown
+        int[][] vision = new int[rows][columns]; // manages visibility. 0 = hidden, 1 = shown, 2 = flag
         boolean solved = false;
         boolean gameOver = false;
         boolean debugMode = false;
@@ -185,20 +189,20 @@ public class MineSweep {
         // begin main sequence
         clearScreen();
 
-        while (true) {
-            /*
-             * if (solveCheck(field, vision) == 0) { // check for win loss or game over
-             * gameOver = true;
-             * } else if (solveCheck(field, vision) == 1) {
-             * solved = true;
-             * gameOver = true;
-             * }
-             */
+        while (!gameOver) {
+
+            if (solveCheck(field, vision) == 0) { // check for win loss or game over
+                gameOver = true;
+            } else if (solveCheck(field, vision) == 1) {
+                solved = true;
+                gameOver = true;
+            }
+
             clearScreen();
             printScreen(field, vision);
             System.out.println("Input anything to proceed.");
             in.nextLine();
-            System.out.println("Input 'g' to guess a spot, 'd' to enable debug options, or 'f' to flag.");
+            System.out.println("Input 'g' to guess a spot, 'd' to enable debug options, 'c' to skip, or 'f' to flag.");
             if (debugMode) {
                 System.out.println("Input 'w' to show winstate, 'h' to reveal the board, or 'z' to solve.");
             }
@@ -210,12 +214,14 @@ public class MineSweep {
                 ySelect = in.nextInt() - 1;
                 vision[xSelect][ySelect] = 1;
                 continue;
+            } else if (input == 'c') {
+                continue;
             } else if (input == 'f') { // flags a single spot, then redraw
                 System.out.print("Please enter a row to flag: ");
                 xSelect = in.nextInt() - 1;
                 System.out.print("Please enter a column to flag: ");
                 ySelect = in.nextInt() - 1;
-                vision[xSelect][ySelect] = 10;
+                vision[xSelect][ySelect] = 2;
             } else if (input == 'w' && debugMode) { // DEBUG: Winstate.
                 System.out.printf("WINSTATE: %d%n Input anything to proceed.%n", solveCheck(field, vision));
                 in.nextLine();
@@ -225,25 +231,23 @@ public class MineSweep {
                 in.nextLine();
             } else if (input == 'd') { // DEBUG: Enable debug mode.
                 debugMode = true;
-            } else if (input == 'z' && debugMode) { // DEBUG: try to instantly solve.
-                for (int[] fields : field) {
-                    int r = 0;
-                    for (int i = 0; i < fields.length; i++) {
-                        if (fields[i] >= 0) {
-                            fields[i] = 10;
-                            vision[r][i] = 2;
+            } else if (input == 'z' && debugMode) { // DEBUG: instantly solve.
+                for (int i = 0; i != rows; i++) {
+                    for (int r = 0; r != columns; r++) {
+                        if (field[i][r] < 0) {
+                            vision[i][r] = 2;
+                        } else {
+                            vision[i][r] = 1;
                         }
                     }
-                    r++;
                 }
             }
         }
-        // System.out.println("WIN STATE:" + solveCheck(field, vision));
-        /*
-         * for (int i = 0; i < field.length; i++) {
-         * System.out.println(Arrays.toString(field[i])); // debug
-         * }
-         */
+        if (solved) {
+            System.out.println("You win!");
+        } else {
+            System.out.println("You lose!");
+        }
 
     }
 }
