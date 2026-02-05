@@ -3,6 +3,7 @@
 import java.util.Scanner;
 
 public class Group1 {
+    @SuppressWarnings("unused")
     private static String reverseString(String subject) {
 
         char[] sortArray = subject.toCharArray();

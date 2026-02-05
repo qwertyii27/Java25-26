@@ -10,15 +10,16 @@
 import java.util.Scanner;
 
 public class ProblemSolveC {
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         // declare variables
-        final double TILE_WIDTH = 5.0;
+        // final double TILE_WIDTH = 5.0;
         double roomWidth;
-        double wallGap;
+        // double wallGap;
         int numTiles;
         int numPairs;
-        int b;
-        int w;
+        // int b;
+        // int w;
 
         // ask roomWidth
         Scanner in = new Scanner(System.in);
@@ -31,5 +32,6 @@ public class ProblemSolveC {
         System.out.println("There are " + numTiles + " tiles!");
 
         // get gap
+        in.close();
     }
 }

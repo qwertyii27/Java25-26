@@ -1,0 +1,5 @@
+Nauru, 61, 1, Australia and Oceania
+Cook Islands, 55.9, 2, Australia and Oceania
+Palau, 55.3, 3, Australia and Oceania
+Marshall Islands, 52.9, 4, Australia and Oceania
+Tuvalu, 51.6, 5, Australia and Oceania

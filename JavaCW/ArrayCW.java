@@ -12,5 +12,6 @@ public class ArrayCW {
         }
         Arrays.sort(thing);
         System.out.println("The largest number is: " + thing[4]);
+        in.close();
     }
 }

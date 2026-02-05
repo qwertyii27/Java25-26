@@ -28,5 +28,6 @@ public class LoopArray {
         }
         mathVar = mathVar / i;
         System.out.printf("%.2f", mathVar);
+        in.close();
     }
 }

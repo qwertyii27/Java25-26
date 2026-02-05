@@ -12,7 +12,7 @@ public class Do_Test {
         do {
             if (error) {
                 System.out.println("Input anything to try again.");
-                String a = in.nextLine();
+                // String a = in.nextLine();
             }
             System.out.print("Please input a money input: ");
             if (!in.hasNextDouble()) {

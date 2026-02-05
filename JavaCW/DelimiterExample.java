@@ -14,5 +14,6 @@ public class DelimiterExample {
             count++;
         }
         System.out.printf("%d words were scanned in.", count);
+        in.close();
     }
 }

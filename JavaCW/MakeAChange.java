@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class MakeAChange {
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter the amount of money in cents:");
@@ -13,5 +14,6 @@ public class MakeAChange {
         System.out.print("Enter your name: ");
         var name = input.next();
         System.out.println("Your name ");
+        input.close();
     }
 }

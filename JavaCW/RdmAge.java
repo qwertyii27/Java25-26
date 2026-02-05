@@ -10,5 +10,6 @@ public class RdmAge {
         } else {
             System.out.println("Sorry, you do not qualify for a senior discount today.");
         }
+        in.close();
     }
 }

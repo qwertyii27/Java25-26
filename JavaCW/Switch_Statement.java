@@ -39,5 +39,6 @@ public class Switch_Statement {
                 break;
         }
         System.out.println(digitName);
+        in.close();
     }
 }

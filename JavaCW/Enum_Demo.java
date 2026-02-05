@@ -5,6 +5,7 @@ public class Enum_Demo {
         Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
     }
 
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         String dayWeek;
         Scanner in = new Scanner(System.in);
@@ -28,7 +29,8 @@ public class Enum_Demo {
                 day = DayOfWeek.Saturday;
             case "Sunday":
                 day = DayOfWeek.Sunday;
-
         }
+        day = DayOfWeek.Saturday;
+        in.close();
     }
 }

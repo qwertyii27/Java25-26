@@ -15,5 +15,6 @@ public class bignumbertest {
             Arrays.sort(cars);
             System.out.println(cars[i]);
         }
+        in.close();
     }
 }
