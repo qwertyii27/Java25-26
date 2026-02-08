@@ -1,0 +1,5 @@
+food, benoit, 12000.50
+stationary, moon, 10000.00
+hardware, byron, 13500.75
+automotive, romilla, n/a
+clothing, brandt, 11000.25
