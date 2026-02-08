@@ -1,0 +1,5 @@
+﻿Marshall Islands, 36, 1, Australia and Oceania
+South Africa, 33.56, 2, Africa
+Kiribati, 30.6, 3, Australia and Oceania
+Kosovo, 30.5, 4, Europe
+American Samoa, 29.8, 5, Australia and Oceania
