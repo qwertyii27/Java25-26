@@ -34,5 +34,6 @@ public class PartB_Sell {
       System.out.printf("%10s | %10s | $ %10.2f%n", department, manager, revenue);
       lineReader.close();
     }
+    in.close();
   }
 }
