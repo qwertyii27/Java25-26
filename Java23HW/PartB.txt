@@ -1,0 +1,17 @@
+The output of the following file is 3. This is because the finally{} block is unique, in that even a return keyword will not prevent it from running.
+Since the program will always run "return 3;" and do so last, this means that that is the value it will return.
+
+    public static int getInt() {
+        try {
+            return 1;
+        } catch (Exception e) {
+            return 2;
+        } finally {
+            return 3;
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getInt());
+    }
+
