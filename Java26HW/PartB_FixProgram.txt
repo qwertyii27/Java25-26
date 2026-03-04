@@ -1,0 +1,5 @@
+The program's output before and after is 0.
+
+The issue is that "this." is implicit when the program does not specify.
+To fix the program, explicitly state either this.value or Item.value to
+ensure the change is actually going through.

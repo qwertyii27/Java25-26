@@ -1,0 +1,3 @@
+The output for both is 150. This is because despite being two different variables,
+c1 and c2 both point to the same object in memory. One change to c1 or c2 changes
+the object, meaning that both change.

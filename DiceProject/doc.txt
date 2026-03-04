@@ -1,0 +1,12 @@
+This is for Part A and Part B.
+
+Member methods:
+roll()
+- produces a random whole number between one and six
+read()
+- returns the current number of the die
+set(int number)
+- sets the die to a number provided between one and six.
+
+Member variables:
+I will only need one instance variable, an integer that will store the current number that the die has face-up.
