@@ -15,12 +15,15 @@ class Yard {
     // initialize array
     char[][] yardArr = new char[this.height][this.width];
 
+    // establish brick fence
     for (int i = 0; i < this.width; i++) {
       yardArr[0][i] = 'R';
       yardArr[this.height][i] = 'R';
     }
 
-    for (int i = 0; i < this.width; i++) {
+    for (int i = 0; i < this.height; i++) {
+      yardArr[i][0] = 'R';
+      yardArr[i][this.width] = 'R';
     }
 
   }
