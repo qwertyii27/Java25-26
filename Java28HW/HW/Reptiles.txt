@@ -1,0 +1,3 @@
+"Suppose you are to design an inheritance hierarchy with the following classes, Snake, Crocodile, Reptile, and Turtle. Which of these is the superclass and why?"
+
+The reptile hierarchy is the superclass. This is because all other classes have all the attributes of the Reptile class (as they are all reptiles), but the Reptile class does not necesarily have all of the attributes of the other three classes.

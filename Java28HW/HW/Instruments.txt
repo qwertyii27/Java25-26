@@ -1,0 +1,9 @@
+Suppose you have designed an inheritance hierarchy that includes the following relationships:
+
+-Guitar is a subclass of Instrument
+-AcousticGuitar is a subclass of Guitar
+-ElectricGuitar is a subclass of Guitar
+
+Given the declarations below, which of the objects CANNOT be passed to the method tune(Guitar g) and why??
+
+You cannot pass an object of the Instrument class, so the answer is D. This is because Guitar and its two child classes all have the attributes of the Guitar class, since AcousticGuitar and ElectricGuitar inherited those attributes. Instrument, meanwhile, is Guitar's superclass, meaning it doesn't necesarily have those attributes.
