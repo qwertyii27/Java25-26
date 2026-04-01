@@ -1,10 +1,16 @@
 // + = unmowed
 // R = wall
 // empty is mowed
+
 class Yard {
   int height;
   int width;
   char[][] yardArr;
+
+  public static void clearScreen() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+  }
 
   public int getHeight() {
     return height;
@@ -24,9 +30,12 @@ class Yard {
 
   // prints out the lawn.
   public void printLawn() {
-    for (int i = 0; i < this.width; i++) {
-      for (int r = 0; r < this.height; r++)
-        System.out.print(yardArr[r][i]);
+    clearScreen();
+    for (int i = 0; i < this.height; i++) {
+      for (int r = 0; r < this.width; r++) {
+        // System.out.printf("%n%d %d", i, r);
+        System.out.print(yardArr[i][r]);
+      }
       System.out.println();
     }
   }
@@ -59,8 +68,4 @@ class Yard {
 
   }
 
-  public static void main(String[] args) {
-    Yard yard = new Yard(10, 10);
-    yard.printLawn();
-  }
 }
