@@ -1,11 +1,15 @@
-// + = unmowed
-// R = wall
-// empty is mowed
 
-class Yard {
-  int height;
-  int width;
-  char[][] yardArr;
+package mow;
+
+public class Yard {
+  private int height;
+  private int width;
+  public char[][] yardArr;
+  // NOTE: Yard is formatted as yard[yPos][xPos].
+  // Character meanings:
+  // + = unmowed
+  // R = wall
+  // empty is mowed
 
   public static void clearScreen() {
     System.out.print("\033[H\033[2J");
@@ -29,12 +33,16 @@ class Yard {
   }
 
   // prints out the lawn.
-  public void printLawn() {
+  public void printLawn(Mower mower) {
     clearScreen();
     for (int i = 0; i < this.height; i++) {
       for (int r = 0; r < this.width; r++) {
         // System.out.printf("%n%d %d", i, r);
-        System.out.print(yardArr[i][r]);
+        if (mower.getYPosition() == i && mower.getXPosition() == r) { // checks for mower on space.
+          System.out.print(">");
+        } else {
+          System.out.print(yardArr[i][r]);
+        }
       }
       System.out.println();
     }
