@@ -172,6 +172,11 @@ public class Card {
     }
   }
 
+  // get the entire card.
+  public String getString() {
+    return Character.toString(getRank()) + Character.toString(getFace());
+  }
+
   // NOTE: Test program.
   public static void main(String[] args) {
     Card twoOfSpades = new Card(rankEnum.TWO, faceEnum.SPADE);
@@ -180,6 +185,10 @@ public class Card {
     for (int i = 0; i < 10; i++) {
       Card rdmCard = new Card();
       System.out.printf("%s%s%n", rdmCard.getRank(), rdmCard.getFace());
+    }
+    for (int i = 0; i < 10; i++) {
+      Card rdmCard = new Card();
+      System.out.println(rdmCard.getString());
     }
   }
 }
