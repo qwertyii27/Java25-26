@@ -1,3 +1,4 @@
+//TODO: Fix compilation/packaging issues here.
 package animate;
 
 import javax.swing.JFrame;
