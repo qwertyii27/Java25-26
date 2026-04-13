@@ -39,7 +39,20 @@ public class Yard {
       for (int r = 0; r < this.width; r++) {
         // System.out.printf("%n%d %d", i, r);
         if (mower.getYPosition() == i && mower.getXPosition() == r) { // checks for mower on space.
-          System.out.print(">");
+          switch (mower.getDirection()) {
+            case 0:
+              System.out.print("v");
+              break;
+            case 1:
+              System.out.print(">");
+              break;
+            case 2:
+              System.out.print("^");
+              break;
+            case 3:
+              System.out.print("<");
+              break;
+          }
         } else {
           System.out.print(yardArr[i][r]);
         }
