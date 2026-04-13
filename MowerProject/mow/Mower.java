@@ -18,6 +18,30 @@ public class Mower {
     checkDirection(); // ensure initialized direction is valid.
   }
 
+  public Mower(Yard yard) {
+    int makeCase = getRandom(1, 4);
+    switch (makeCase) {
+      case 1:
+        this.xPos = 1;
+        this.yPos = 1;
+        break;
+      case 2:
+        this.xPos = 1;
+        this.yPos = yard.getHeight() - 2;
+        break;
+      case 3:
+        this.xPos = yard.getWidth() - 2;
+        this.yPos = 1;
+        break;
+      case 4:
+        this.yPos = yard.getHeight() - 2;
+        this.xPos = yard.getWidth() - 2;
+        break;
+    }
+    this.direction = 0;
+    checkDirection(); // ensure initialized direction is valid.
+  }
+
   // ensure int direction is in a valid position.
   public void checkDirection() {
     if (direction < 0) {
@@ -53,6 +77,11 @@ public class Mower {
   public void setDirection(int direction) {
     this.direction = direction;
     checkDirection();
+  }
+
+  // NOTE: miscallaneous random method
+  private static int getRandom(int min, int max) {
+    return (int) (Math.random() * (max - min) + min);
   }
 
   // if neither, return 0.
