@@ -1,5 +1,3 @@
-//TODO: Fix package/compilation issues here.
-//package Java32HW;
 
 import javax.swing.JPanel;
 import java.awt.Color;

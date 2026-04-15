@@ -1,5 +1,3 @@
-//TODO: Fix compilation/packaging issues here.
-///package Java32HW;
 
 import javax.swing.JFrame;
 import java.awt.EventQueue;
