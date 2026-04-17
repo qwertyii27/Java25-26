@@ -66,11 +66,10 @@ public class Blackjack {
           playerLose = true;
           continue;
         }
-        delay(3000);
-        clearScreen();
         // dealers traditionally stop at 17, even if they lose.
         while (getHandValue(dealerHand) < 17 && !playerWin && !playerLose) {
-
+          delay(3000);
+          clearScreen();
           // add card.
           dealerHand.add(deal());
           // print info.
@@ -89,7 +88,7 @@ public class Blackjack {
           }
         }
         // makes checks for winner if dealer stands.
-        if (!playerLose && !playerWin)
+        if (!playerLose && !playerWin && getHandValue(playerHand) < 21 && getHandValue(dealerHand) < 21)
           if (getHandValue(dealerHand) > getHandValue(playerHand)) {
             System.out.println("Dealer's hand wins. Lose!");
             playerLose = true;
