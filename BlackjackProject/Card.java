@@ -155,7 +155,7 @@ public class Card {
         this.rank = '9';
         break;
       case TEN:
-        this.rank = 'T';
+        this.rank = '0';
         break;
       case JACK:
         this.rank = 'J';
