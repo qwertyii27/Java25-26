@@ -64,6 +64,7 @@ public class Blackjack {
         System.out.println("Player: " + getHand(playerHand));
         if (getHandValue(dealerHand) > getHandValue(playerHand)) { // if second card won alone.
           playerLose = true;
+          continue;
         }
         delay(3000);
         clearScreen();
@@ -88,7 +89,7 @@ public class Blackjack {
           }
         }
         // makes checks for winner if dealer stands.
-        if (!playerLose || playerWin)
+        if (!playerLose && !playerWin)
           if (getHandValue(dealerHand) > getHandValue(playerHand)) {
             System.out.println("Dealer's hand wins. Lose!");
             playerLose = true;
