@@ -1,0 +1,4 @@
+Question #1:
+Of the following, "A: Resizable shape = new Resizable();" will cause a compilation error. This is because an interface cannot itself be an object, it is instead implemented.
+Question #2:
+Since they are using the Resizable interface, "b: circle.resize(2.5);" will compile successfully. This is because of all the methods, resize() is the one written in the interface, meaning all implementations of the interface will be able to use it.
